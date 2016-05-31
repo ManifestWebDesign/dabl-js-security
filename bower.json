@@ -1,0 +1,11 @@
+{
+	"name": "dablJs.security",
+	"version": "0.0.1",
+	"ignore": [],
+	"main": "dist/dabl-api.security.js",
+	"devDependencies": {
+		"angular": "~1.3.0",
+		"angular-mocks": "~1.3.0",
+		"jsSHA": "~2.0.2"
+	}
+}
