@@ -35,3 +35,49 @@ F=Z,I=S;else throw Error("Unexpected error in SHA-2 implementation");d=a[0];q=a[
 new b(e[36],2343527390),new b(e[37],1014477480),new b(e[38],1206759142),new b(e[39],344077627),new b(e[40],1290863460),new b(e[41],3158454273),new b(e[42],3505952657),new b(e[43],106217008),new b(e[44],3606008344),new b(e[45],1432725776),new b(e[46],1467031594),new b(e[47],851169720),new b(e[48],3100823752),new b(e[49],1363258195),new b(e[50],3750685593),new b(e[51],3785050280),new b(e[52],3318307427),new b(e[53],3812723403),new b(e[54],2003034995),new b(e[55],3602036899),new b(e[56],1575990012),
 new b(e[57],1125592928),new b(e[58],2716904306),new b(e[59],442776044),new b(e[60],593698344),new b(e[61],3733110249),new b(e[62],2999351573),new b(e[63],3815920427),new b(3391569614,3928383900),new b(3515267271,566280711),new b(3940187606,3454069534),new b(4118630271,4000239992),new b(116418474,1914138554),new b(174292421,2731055270),new b(289380356,3203993006),new b(460393269,320620315),new b(685471733,587496836),new b(852142971,1086792851),new b(1017036298,365543100),new b(1126000580,2618297676),
 new b(1288033470,3409855158),new b(1501505948,4234509866),new b(1607167915,987167468),new b(1816402316,1246189591)];"function"===typeof define&&define.amd?define(function(){return y}):"undefined"!==typeof exports?"undefined"!==typeof module&&module.exports?module.exports=exports=y:exports=y:T.jsSHA=y})(this);
+;'use strict';
+
+angular.module('dablJs.security', []);;'use strict';
+
+angular.module('dablJs.security')
+
+.service('jsSHA', function() {
+	if (typeof jsSHA === 'undefined') {
+		throw new Error('jsSHA is not included');
+	}
+
+	return jsSHA;
+});;'use strict';
+/*global jsSHA: false */
+angular.module('dablJs.security')
+.factory('dablSecurity', [
+	'jsSHA',
+function(
+	jsSHA
+){
+	var obj = {};
+
+	obj.getHMAC = function(skey, content){
+		var hasher = new jsSHA('SHA-512', 'TEXT');
+		hasher.setHMACKey(skey, 'TEXT');
+		hasher.update(content);
+		return hasher.getHMAC('HEX');
+	};
+
+	obj.getHash = function(content, type) {
+		type = type || 'SHA-512';
+		var hasher = new jsSHA(type, 'TEXT');
+		hasher.update(content);
+		return hasher.getHash('HEX');
+	};
+
+	obj.encode64 = function(d) {
+		return btoa(d);
+	};
+
+	obj.decode64 = function(d) {
+		return atob(d);
+	};
+
+	return obj;
+}]);
