@@ -1,6 +1,6 @@
 {
-  "name": "dablJs.security",
-  "version": "0.0.1",
+  "name": "dabl-js-security",
+  "version": "1.0.0",
   "description": "Shared DABL JS lib for dealing with HMAC headers",
   "devDependencies": {
     "grunt": "~0.4.1",

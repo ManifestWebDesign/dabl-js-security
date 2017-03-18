@@ -1,6 +1,6 @@
 {
-	"name": "dablJs.security",
-	"version": "0.0.1",
+	"name": "dabl-js-security",
+	"version": "1.0.0",
 	"ignore": [],
 	"main": "dist/dabl-js.security.js",
 	"devDependencies": {
